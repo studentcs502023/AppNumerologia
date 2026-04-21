@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { obtenerTodasLasLoterias } from '../helpers/loteria.js';
+import { obtenerTodasLasLoterias, generarNumeroSuerte } from '../helpers/loteria.js';
 import { validarJWT } from '../helpers/validar-JWT.js';
 import { esPremium } from '../middlewares/pagos.js';
 
@@ -11,6 +11,15 @@ router.get('/todas', [validarJWT, esPremium], async (req, res) => {
         res.json({ success: true, data: resultados });
     } catch (error) {
         res.status(500).json({ success: false, msg: 'Error al obtener las loterías' });
+    }
+});
+
+router.get('/suerte', [validarJWT], (req, res) => {
+    try {
+        const resultado = generarNumeroSuerte();
+        res.json({ success: true, data: resultado });
+    } catch (error) {
+        res.status(500).json({ success: false, msg: 'Error al generar número de la suerte' });
     }
 });
 
