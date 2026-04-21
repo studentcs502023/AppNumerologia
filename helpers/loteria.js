@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const scrapeLoteriaGeneral = async (slug, nombre) => {
+export const scrapeLoteriaGeneral = async (slug, nombre) => {
     try {
-        const url = `https://www.loteriasdehoy.co/${slug}/`;
+        const url = `https://loteriasdehoy.co/${slug}/`;
         const { data } = await axios.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, timeout: 8000 });
         
         // Buscamos el div ultimo_resultado y los 4 spans de los dígitos
@@ -47,4 +47,11 @@ export const obtenerTodasLasLoterias = async () => {
         { slug: 'huila', nombre: 'Lotería del Huila' } 
     ];
     return await Promise.all(loterias.map(l => scrapeLoteriaGeneral(l.slug, l.nombre)));
+};
+
+export const generarNumeroSuerte = (usuario) => {
+    // Generamos un número de 4 cifras y una serie de 3 cifras
+    const numero = Math.floor(1000 + Math.random() * 9000).toString();
+    const serie = Math.floor(100 + Math.random() * 900).toString();
+    return { numero, serie };
 };
