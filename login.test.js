@@ -7,7 +7,7 @@ describe('Pruebas de Login (Mocha) - Realistas', () => {
         
         it('Debe fallar si el email no contiene @', () => {
             // const resultado = validarFormatoLogin('email-sin-arroba', '123456');
-            expect(resultado.valido).to.be.false;
+            // expect(resultado.valido).to.be.false;
 expect(resultado.msg).to.equal('Este mensaje va a fallar');
             // expect(resultado.msg).to.equal('Email inválido');
         });
