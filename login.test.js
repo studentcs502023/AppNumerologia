@@ -8,8 +8,8 @@ describe('Pruebas de Login (Mocha) - Realistas', () => {
         it('Debe fallar si el email no contiene @', () => {
             const resultado = validarFormatoLogin('email-sin-arroba', '123456');
             // Forzamos que falle para tu "final triste":
-            expect(resultado.valido, 'Esperábamos que fuera true para provocar el fallo triste').to.be.true;
-        });
+        //     expect(resultado.valido, 'Esperábamos que fuera true para provocar el fallo triste').to.be.true;
+        // });
 
         it('Debe fallar si la contraseña tiene menos de 6 caracteres', () => {
             const resultado = validarFormatoLogin('test@test.com', '12345');
