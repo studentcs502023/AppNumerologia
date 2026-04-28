@@ -23,4 +23,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
-    - run: npm test
+    - name: 🚀 Ejecutando Pruebas (Happy & Sad Path)
+      run: npm test
+      env:
+        CI: true
+        FORCE_COLOR: 3
